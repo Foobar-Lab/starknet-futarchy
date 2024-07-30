@@ -1,0 +1,1 @@
+{"version":1,"contracts":[{"id":"rr1lf6lrmnpts","package_name":"backend","contract_name":"HelloStarknet","module_path":"backend::HelloStarknet","artifacts":{"sierra":"backend_HelloStarknet.contract_class.json","casm":null}}]}
