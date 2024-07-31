@@ -4,11 +4,11 @@ import { Button } from "@nextui-org/button";
 export default function HeaderSection() {
 	return (
 		<div className="flex justify-between items-center mx-8 my-4">
-			<Link className="bg-gradient-to-r from-primary-500" href={"/"}>
+			<Link className="logo text-4xl font-bold" href={"/"}>
 				FutarchEth
 			</Link>
 
-			<Button color="primary">Connect Wallet</Button>
+			<Button color="primary" variant="ghost">Connect Wallet</Button>
 		</div>
 	);
 }
