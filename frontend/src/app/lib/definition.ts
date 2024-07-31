@@ -4,10 +4,12 @@ export type ProposalCreateOnChain = {
 
 export type ProposalGetOnChain = {
 	distributedFileSystemIdentifierCid: string;
+    authorAddress: string;
 	status: number;
 	balanceYes: bigint;
 	balanceNo: bigint;
     adoptionPhaseStartTimeInSeconds: bigint; 
+    adoptionSuccesCriterion: number;
 	successCriterionAchieved: boolean;
     oracleAddress: string;
 };
@@ -18,7 +20,6 @@ export type ProposalIpfs = {
 	externalLink: string;
 	tradingPhaseDurationInSeconds: bigint;
 	adoptionPhaseDurationInSeconds: bigint;
-	adoptionSuccesCriterion: number;
 	adoptionSuccesCriterionDescription: string;
 };
 
