@@ -1,9 +1,9 @@
 export type ProposalCreateOnChain = {
-	distributedFileSystemIdentifierCID: string;
+	distributedFileSystemIdentifierCid: string;
 };
 
 export type ProposalGetOnChain = {
-	distributedFileSystemIdentifierCID: string;
+	distributedFileSystemIdentifierCid: string;
 	status: number;
 	balanceYes: bigint;
 	balanceNo: bigint;
@@ -12,7 +12,7 @@ export type ProposalGetOnChain = {
     oracleAddress: string;
 };
 
-export type ProposalIPFS = {
+export type ProposalIpfs = {
 	title: string;
 	overview: string;
 	externalLink: string;
@@ -20,6 +20,11 @@ export type ProposalIPFS = {
 	adoptionPhaseDurationInSeconds: bigint;
 	adoptionSuccesCriterion: number;
 	adoptionSuccesCriterionDescription: string;
+};
+
+export type Proposal = {
+	onchain: ProposalGetOnChain;
+	ipfs: ProposalIpfs;
 };
 
 export const ProposalStatus = {
