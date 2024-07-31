@@ -7,16 +7,17 @@ export type ProposalGetOnChain = {
 	status: number;
 	balanceYes: bigint;
 	balanceNo: bigint;
+    adoptionPhaseStartTimeInSeconds: bigint; 
 	successCriterionAchieved: boolean;
+    oracleAddress: string;
 };
 
 export type ProposalIPFS = {
-	oracleAddress: string;
 	title: string;
 	overview: string;
 	externalLink: string;
-	tradingPhaseDurationInDays: number;
-	adoptionPhaseDurationInDays: number;
+	tradingPhaseDurationInSeconds: bigint;
+	adoptionPhaseDurationInSeconds: bigint;
 	adoptionSuccesCriterion: number;
 	adoptionSuccesCriterionDescription: string;
 };
