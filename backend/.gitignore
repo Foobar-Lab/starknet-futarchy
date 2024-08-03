@@ -11,3 +11,6 @@ coverage.json
 # foundry
 out
 .env
+
+Scarb.lock
+target/dev/*

@@ -1,47 +1,48 @@
 use starknet::ContractAddress;
 
 use snforge_std::{declare, ContractClassTrait};
+use backend::governance::{ IGovernanceDispatcher, IGovernanceDispatcherTrait };
+use backend::governance::Governance;
 
-use backend::IHelloStarknetSafeDispatcher;
-use backend::IHelloStarknetSafeDispatcherTrait;
-use backend::IHelloStarknetDispatcher;
-use backend::IHelloStarknetDispatcherTrait;
+#[test]
+#[available_gas(2000000000)]
+fn test_create_proposal() {
+    let contract = declare("Governance").unwrap();
+    let (contract_address, _) = contract.deploy(@array![]).unwrap();
 
-fn deploy_contract(name: ByteArray) -> ContractAddress {
-    let contract = declare(name).unwrap();
-    let (contract_address, _) = contract.deploy(@ArrayTrait::new()).unwrap();
-    contract_address
+    let dispatcher = IGovernanceDispatcher { contract_address };
+
+    let oracleAddress: ContractAddress = 'oracletest'.try_into().unwrap();
+    let marketAddress: ContractAddress = 'markettest'.try_into().unwrap();
+    dispatcher.createProposal('hashfortest', 3600, 7200, oracleAddress, marketAddress);
+    let proposal = dispatcher.getProposalById(0);
+    assert(proposal.distributedFileSystemIdentifier == 'hashfortest', 'Invalid cid');
+    assert(proposal.marketAddress == marketAddress, 'Invalid market');
+    assert(proposal.oracleAddress == oracleAddress, 'Invalid oracle');
+    assert(proposal.tradingPhaseDurationInSeconds == 3600, 'Invalid tradingPhase');
+    assert(proposal.adoptionPhaseDurationInSeconds == 7200, 'Invalid adoptionPhase');
 }
 
 #[test]
-fn test_increase_balance() {
-    let contract_address = deploy_contract("HelloStarknet");
+#[available_gas(2000000000)]
+fn test_get_proposals_from_author() {
+    let contract = declare("Governance").unwrap();
+    let (contract_address, _) = contract.deploy(@array![]).unwrap();
 
-    let dispatcher = IHelloStarknetDispatcher { contract_address };
+    let dispatcher = IGovernanceDispatcher { contract_address };
 
-    let balance_before = dispatcher.get_balance();
-    assert(balance_before == 0, 'Invalid balance');
+    let oracleAddress: ContractAddress = 'oracletest'.try_into().unwrap();
+    let marketAddress: ContractAddress = 'markettest'.try_into().unwrap();
+    dispatcher.createProposal('hashfortest', 3600, 7200, oracleAddress, marketAddress);
+    dispatcher.createProposal('hashfortest2', 4800, 9600, oracleAddress, marketAddress);
 
-    dispatcher.increase_balance(42);
+    let author = dispatcher.getProposalById(0).authorAddress;
+    let author2 = dispatcher.getProposalById(1).authorAddress;
+    assert(author == author2, 'Author issue');
 
-    let balance_after = dispatcher.get_balance();
-    assert(balance_after == 42, 'Invalid balance');
+    let arrayOfProposal = dispatcher.getAuthorProposals(author);
+    assert(arrayOfProposal.len() == 2, 'Length issue');
+
 }
 
-#[test]
-#[feature("safe_dispatcher")]
-fn test_cannot_increase_balance_with_zero_value() {
-    let contract_address = deploy_contract("HelloStarknet");
 
-    let safe_dispatcher = IHelloStarknetSafeDispatcher { contract_address };
-
-    let balance_before = safe_dispatcher.get_balance().unwrap();
-    assert(balance_before == 0, 'Invalid balance');
-
-    match safe_dispatcher.increase_balance(0) {
-        Result::Ok(_) => core::panic_with_felt252('Should have panicked'),
-        Result::Err(panic_data) => {
-            assert(*panic_data.at(0) == 'Amount cannot be 0', *panic_data.at(0));
-        }
-    };
-}
