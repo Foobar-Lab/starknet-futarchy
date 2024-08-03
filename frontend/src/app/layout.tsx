@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { satoshi } from "@/app/fonts/satoshi";
+// import { satoshi } from "@/app/fonts/satoshi";
 import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/app/providers";
 import HeaderSection from "@/app/components/header-section";
 
 const inter = Inter({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "Starknet Futarchy.",
@@ -19,7 +21,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={satoshi.className}>
+			<body className={spaceGrotesk.className}>
 				<HeaderSection />
 				<Providers>{children}</Providers>
 			</body>

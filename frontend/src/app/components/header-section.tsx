@@ -1,5 +1,4 @@
-import { Link } from "@nextui-org/link";
-import { Button } from "@nextui-org/button";
+import { Link, Button } from "@nextui-org/react";
 
 export default function HeaderSection() {
 	return (

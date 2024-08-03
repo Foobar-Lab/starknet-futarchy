@@ -12,19 +12,19 @@ export type ProposalGetOnChain = {
     adoptionSuccesCriterion: number;
 	successCriterionAchieved: boolean;
     oracleAddress: string;
+	tradingPhaseDurationInSeconds: bigint;
+	adoptionPhaseDurationInSeconds: bigint;
+	adoptionSuccesCriterionDescription: string;
 };
 
 export type ProposalIpfs = {
 	title: string;
 	overview: string;
 	externalLink: string;
-	tradingPhaseDurationInSeconds: bigint;
-	adoptionPhaseDurationInSeconds: bigint;
-	adoptionSuccesCriterionDescription: string;
 };
 
 export type Proposal = {
-	onchain: ProposalGetOnChain;
+	onChain: ProposalGetOnChain;
 	ipfs: ProposalIpfs;
 };
 
