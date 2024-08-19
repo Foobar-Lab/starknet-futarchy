@@ -31,7 +31,9 @@ export default function HeroSection() {
 					<span ref={el}></span>
 				</div>
 				<div className="mb-8">
-					<Button color="primary">New Proposal</Button>
+					<Link href={"/proposal-create"}>
+						<Button color="primary">New Proposal</Button>
+					</Link>
 				</div>
 			</div>
 			<div className="flex items-end justify-end col-start-3 col-end-7">

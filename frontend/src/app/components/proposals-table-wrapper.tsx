@@ -14,18 +14,17 @@ export default async function ProposalsTableWrapper() {
 				balanceYes: BigInt(1200),
 				balanceNo: BigInt(30),
 				adoptionPhaseStartTimeInSeconds: BigInt(99999999),
-				adoptionSuccesCriterion: 88,
 				successCriterionAchieved: false,
 				oracleAddress: "oracleAddressPlaceholder",
 				tradingPhaseDurationInSeconds: BigInt(99999999999),
-				adoptionPhaseDurationInSeconds: BigInt(99999999999999),
-				adoptionSuccesCriterionDescription:
-					"adoptionSuccesCriterionDescriptionPlaceholder"
+				adoptionPhaseDurationInSeconds: BigInt(99999999999999)
 			},
 			ipfs: {
 				title: "Partnering with artists to launch a new line of our best-selling product.",
 				overview: "As a company, our goal is to achieve a 5% increase in turnover within the next year by enhancing our product offerings, We are committed to implementing strategic initiatives that will drive growth and deliver value to our stakeholders. That is why we want to partner with artists to launch a new line of our best-selling product.",
-				externalLink: "https://"
+				externalLink: "https://",
+				adoptionSuccessCriterionDescription:
+					"adoptionSuccesCriterionDescriptionPlaceholder"
 			},
 		},
 		{
@@ -36,17 +35,16 @@ export default async function ProposalsTableWrapper() {
 				balanceYes: BigInt(150000),
 				balanceNo: BigInt(35000),
 				adoptionPhaseStartTimeInSeconds: BigInt(99999999),
-				adoptionSuccesCriterion: 88,
 				successCriterionAchieved: false,
 				oracleAddress: "oracleAddressPlaceholder",
 				tradingPhaseDurationInSeconds: BigInt(99999999999),
-				adoptionPhaseDurationInSeconds: BigInt(99999999999999),
-				adoptionSuccesCriterionDescription: "adoptionSuccesCriterionDescriptionPlaceholder"
+				adoptionPhaseDurationInSeconds: BigInt(99999999999999)
 			},
 			ipfs: {
 				title: "Lay off 10% of employees to reduce debt by 30%.",
 				overview: "overviewPlaceholder",
 				externalLink: "externalLinkPlaceholder",
+				adoptionSuccessCriterionDescription: "adoptionSuccesCriterionDescriptionPlaceholder"
 			}
 		},
 		{
@@ -57,18 +55,17 @@ export default async function ProposalsTableWrapper() {
 				balanceYes: BigInt(140),
 				balanceNo: BigInt(20),
 				adoptionPhaseStartTimeInSeconds: BigInt(99999999),
-				adoptionSuccesCriterion: 88,
 				successCriterionAchieved: false,
 				oracleAddress: "oracleAddressPlaceholder",
 				tradingPhaseDurationInSeconds: BigInt(99999999999),
-				adoptionPhaseDurationInSeconds: BigInt(99999999999999),
-				adoptionSuccesCriterionDescription:
-					"adoptionSuccesCriterionDescriptionPlaceholder"
+				adoptionPhaseDurationInSeconds: BigInt(99999999999999)
 			},
 			ipfs: {
 				title: "Add 1000 km of cycle paths in Paris to reduce CO2 emissions by 2% in 1 year.",
 				overview: "overviewPlaceholder",
-				externalLink: "externalLinkPlaceholder"
+				externalLink: "externalLinkPlaceholder",
+				adoptionSuccessCriterionDescription:
+					"adoptionSuccesCriterionDescriptionPlaceholder"
 			}
 		},
 		{
@@ -79,18 +76,17 @@ export default async function ProposalsTableWrapper() {
 				balanceYes: BigInt(5600),
 				balanceNo: BigInt(10765),
 				adoptionPhaseStartTimeInSeconds: BigInt(99999999),
-				adoptionSuccesCriterion: 88,
 				successCriterionAchieved: false,
 				oracleAddress: "oracleAddressPlaceholder",
 				tradingPhaseDurationInSeconds: BigInt(99999999999),
-				adoptionPhaseDurationInSeconds: BigInt(99999999999999),
-				adoptionSuccesCriterionDescription:
-					"adoptionSuccesCriterionDescriptionPlaceholder"
+				adoptionPhaseDurationInSeconds: BigInt(99999999999999)
 			},
 			ipfs: {
 				title: "Allocate 30% of tokens to the first contributors of the ecosystem (developers, designers, marketers).",
 				overview: "overviewPlaceholder",
-				externalLink: "externalLinkPlaceholder"
+				externalLink: "externalLinkPlaceholder",
+				adoptionSuccessCriterionDescription:
+					"adoptionSuccesCriterionDescriptionPlaceholder"
 			}
 		},
 	];
