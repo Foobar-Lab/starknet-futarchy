@@ -30,8 +30,9 @@ pub mod Market {
     use backend::yestoken::{IYesTokenDispatcher, IYesTokenDispatcherTrait};
     use backend::notoken::{INoTokenDispatcher, INoTokenDispatcherTrait};
     use starknet::{
-        ContractAddress, get_caller_address, get_contract_address, contract_address_const
+        ContractAddress, get_contract_address
     };
+    use starknet::storage::Map;
     use super::TokenState;
 
     component!(path: super::OwnableComponent, storage: ownable, event: OwnableEvent);
@@ -46,8 +47,8 @@ pub mod Market {
         noToken : INoTokenDispatcher,
         token_winner: TokenState,
         resolution: bool,
-        yes_balance_by_account: LegacyMap::<ContractAddress, u256>,
-        no_balance_by_account: LegacyMap::<ContractAddress, u256>,
+        yes_balance_by_account: Map::<ContractAddress, u256>,
+        no_balance_by_account: Map::<ContractAddress, u256>,
         #[substorage(v0)]
         ownable: super::OwnableComponent::Storage
     }

@@ -3,17 +3,14 @@ use starknet::ContractAddress;
 
 use starknet::contract_address_const;
 
-use snforge_std::{declare, ContractClassTrait};
+use snforge_std::{declare, ContractClassTrait, DeclareResultTrait};
 use backend::governance::{ IGovernanceDispatcher, IGovernanceDispatcherTrait };
-use backend::governance::Governance;
 use backend::market::{ IMarketDispatcher, IMarketDispatcherTrait };
-use backend::yestoken::{IYesTokenDispatcher, IYesTokenDispatcherTrait};
-use backend::notoken::{INoTokenDispatcher, INoTokenDispatcherTrait};
 
 #[test]
 #[available_gas(2000000000)]
 fn test_create_proposal() {
-    let contract = declare("Governance").unwrap();
+    let contract = declare("Governance").unwrap().contract_class();
     let (contract_address, _) = contract.deploy(@array![]).unwrap();
 
     let dispatcher = IGovernanceDispatcher { contract_address };
@@ -29,10 +26,11 @@ fn test_create_proposal() {
     assert(proposal.adoptionPhaseDurationInSeconds == 7200, 'Invalid adoptionPhase');
 }
 
+
 #[test]
 #[available_gas(2000000000)]
 fn test_get_proposals_from_author() {
-    let contract = declare("Governance").unwrap();
+    let contract = declare("Governance").unwrap().contract_class();
     let (contract_address, _) = contract.deploy(@array![]).unwrap();
 
     let dispatcher = IGovernanceDispatcher { contract_address };
@@ -48,19 +46,18 @@ fn test_get_proposals_from_author() {
 
     let arrayOfProposal = dispatcher.getAuthorProposals(author);
     assert(arrayOfProposal.len() == 2, 'Length issue');
-
 }
 
 #[test]
 #[available_gas(2000000000)]
 fn test_market() {
-    let contractYesToken = declare("YesToken").unwrap();
-    let contractNoToken = declare("NoToken").unwrap();
+    let contractYesToken = declare("YesToken").unwrap().contract_class();
+    let contractNoToken = declare("NoToken").unwrap().contract_class();
 
     let (yesTokenAddress, _) = contractYesToken.deploy(@array![]).unwrap();
     let (noTokenAddress, _) = contractNoToken.deploy(@array![]).unwrap();
 
-    let contractMarket = declare("Market").unwrap();
+    let contractMarket = declare("Market").unwrap().contract_class();
     // Contructor arguments
     let mut constructor_calldata: Array::<felt252> = array![yesTokenAddress.into(), noTokenAddress.into()];
     let (contract_address, _) = contractMarket.deploy(@constructor_calldata).unwrap();     
