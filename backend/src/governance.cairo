@@ -43,6 +43,7 @@ pub mod Governance {
     use core::array::ArrayTrait;
     use core::option::OptionTrait;
     use starknet::ContractAddress;
+    use starknet::storage::Map;
     use super::Proposal;
     use super::Status;
     use super::StoreFelt252Array;
@@ -57,8 +58,8 @@ pub mod Governance {
     #[storage]
     struct Storage {
         pub proposalsIds: Array<felt252>, // WARNING : Stored arrays can't contain more than 255 elements, should be considered in future scopes
-        pub proposalById : LegacyMap::<felt252, Proposal>,
-        pub proposalsByAuthor: LegacyMap::<ContractAddress, Array<felt252>>, // WARNING : Stored arrays can't contain more than 255 elements, should be considered in future scopes
+        pub proposalById : Map::<felt252, Proposal>,
+        pub proposalsByAuthor: Map::<ContractAddress, Array<felt252>>, // WARNING : Stored arrays can't contain more than 255 elements, should be considered in future scopes
         #[substorage(v0)]
         ownable: super::OwnableComponent::Storage
     }
