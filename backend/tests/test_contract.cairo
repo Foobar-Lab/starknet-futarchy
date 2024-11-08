@@ -4,7 +4,7 @@ use snforge_std::{declare, ContractClassTrait, DeclareResultTrait};
 use backend::governance::{ IGovernanceDispatcher, IGovernanceDispatcherTrait };
 
 #[test]
-//#[available_gas(2000000000)]
+#[available_gas(2000000000)]
 fn test_create_proposal() {
     let contract = declare("Governance").unwrap().contract_class();
     let (contract_address, _) = contract.deploy(@array![]).unwrap();
@@ -24,7 +24,7 @@ fn test_create_proposal() {
 
 
 #[test]
-//#[available_gas(2000000000)]
+#[available_gas(2000000000)]
 fn test_get_proposals_from_author() {
     let contract = declare("Governance").unwrap().contract_class();
     let (contract_address, _) = contract.deploy(@array![]).unwrap();
