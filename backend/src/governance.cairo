@@ -42,7 +42,7 @@ pub mod Governance {
     use core::traits::TryInto;
     use core::array::ArrayTrait;
     use core::option::OptionTrait;
-    use starknet::ContractAddress;
+    use starknet::ContractAddress;    
     use starknet::storage::Map;
     use super::Proposal;
     use super::Status;
@@ -157,13 +157,13 @@ pub mod Governance {
 // This block of code is used to store Array<felt252> in the Storage.
 impl StoreFelt252Array of starknet::Store<Array<felt252>> {
     fn read(address_domain: u32, base: starknet::storage_access::StorageBaseAddress) -> starknet::SyscallResult<Array<felt252>> {
-        StoreFelt252Array::read_at_offset(address_domain, base, 0)
+        Self::read_at_offset(address_domain, base, 0)
     }
 
     fn write(
         address_domain: u32, base: starknet::storage_access::StorageBaseAddress, value: Array<felt252>
     ) -> starknet::SyscallResult<()> {
-        StoreFelt252Array::write_at_offset(address_domain, base, 0, value)
+        Self::write_at_offset(address_domain, base, 0, value)
     }
 
     fn read_at_offset(
