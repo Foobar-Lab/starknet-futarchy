@@ -13,4 +13,4 @@ out
 .env
 
 Scarb.lock
-target/dev/*
+target
